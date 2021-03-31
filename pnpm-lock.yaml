@@ -1,6 +1,12 @@
 dependencies:
+  axios: 0.21.1
   core-js: 3.9.1
+  element-ui: 2.15.1_vue@2.6.12
   vue: 2.6.12
+  vue-axios: 3.2.4_axios@0.21.1+vue@2.6.12
+  vue-cookie: 1.1.4
+  vue-cookies: 1.7.4
+  vue-lazyload: 1.3.3
   vue-router: 3.5.1
   vuex: 3.6.2_vue@2.6.12
 devDependencies:
@@ -11,6 +17,7 @@ devDependencies:
   '@vue/cli-service': 4.5.12_0c9aa244d7e79d74904ce8f2f36cc30e
   '@vue/eslint-config-standard': 5.1.2_6a05f004e3f105138d422c6167aece92
   babel-eslint: 10.1.0_eslint@6.8.0
+  babel-plugin-component: 1.1.1
   eslint: 6.8.0
   eslint-plugin-import: 2.22.1_eslint@6.8.0
   eslint-plugin-node: 11.1.0_eslint@6.8.0
@@ -160,6 +167,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-48ql1CLL59aKbU94Y88Xgb2VFy7a95ykGRbJJaaVv+LX5U8wFpLfiGXJJGUozsmA1oEh/o5Bp60Voq7ACyA/Sw==
+  /@babel/helper-module-imports/7.0.0-beta.35:
+    dependencies:
+      '@babel/types': 7.0.0-beta.35
+      lodash: 4.17.21
+    dev: true
+    resolution:
+      integrity: sha512-vaC1KyIZSuyWb3Lj277fX0pxivyHwuDU4xZsofqgYAbkDxNieMg2vuhzP5AgMweMY7fCQUMTi+BgPqTLjkxXFg==
   /@babel/helper-module-imports/7.13.12:
     dependencies:
       '@babel/types': 7.13.14
@@ -992,6 +1006,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-CblEcwmXKR6eP43oQGG++0QMTtCjAsa3frUuzHoiIJWpaIIi8dwMyEFUJoXRLxagGqCK+jALRwIO+o3R9p/uUg==
+  /@babel/types/7.0.0-beta.35:
+    dependencies:
+      esutils: 2.0.3
+      lodash: 4.17.21
+      to-fast-properties: 2.0.0
+    dev: true
+    resolution:
+      integrity: sha512-y9XT11CozHDgjWcTdxmhSj13rJVXpa5ZXwjjOiTedjaM0ba5ItqdS02t31EhPl7HtOWxsZkYCCUNrSfrOisA6w==
   /@babel/types/7.13.14:
     dependencies:
       '@babel/helper-validator-identifier': 7.12.11
@@ -2080,6 +2102,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
+  /async-validator/1.8.5:
+    dependencies:
+      babel-runtime: 6.26.0
+    dev: false
+    resolution:
+      integrity: sha512-tXBM+1m056MAX0E8TL2iCjg8WvSyXu0Zc8LNtYqrVeyoL3+esHRZ4SieE9fKQyyU09uONjnMEjrNBMqT0mbvmA==
   /async/2.6.3:
     dependencies:
       lodash: 4.17.21
@@ -2118,6 +2146,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
+  /axios/0.21.1:
+    dependencies:
+      follow-redirects: 1.13.3
+    dev: false
+    resolution:
+      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /babel-eslint/10.1.0_eslint@6.8.0:
     dependencies:
       '@babel/code-frame': 7.12.13
@@ -2135,6 +2169,10 @@ packages:
       eslint: '>= 4.12.1'
     resolution:
       integrity: sha512-ifWaTHQ0ce+448CYop8AdrQiBsGrnC+bMgfyKFdi6EsPLTAWG+QfyDeM6OH+FmWnKvEq5NnBMLvlBUPKQZoDSg==
+  /babel-helper-vue-jsx-merge-props/2.0.3:
+    dev: false
+    resolution:
+      integrity: sha512-gsLiKK7Qrb7zYJNgiXKpXblxbV5ffSwR0f5whkPAaBAR4fhi6bwRZxX9wBlIc5M/v8CCkXUbXZL4N/nSE97cqg==
   /babel-loader/8.2.2_7e486df4975382d398886f3bfd1b266c:
     dependencies:
       '@babel/core': 7.13.14
@@ -2151,6 +2189,12 @@ packages:
       webpack: '>=2'
     resolution:
       integrity: sha512-JvTd0/D889PQBtUXJ2PXaKU/pjZDMtHA9V2ecm+eNRmmBCMR09a+fmpGTNwnJtFmFl5Ei7Vy47LjBb+L0wQ99g==
+  /babel-plugin-component/1.1.1:
+    dependencies:
+      '@babel/helper-module-imports': 7.0.0-beta.35
+    dev: true
+    resolution:
+      integrity: sha512-WUw887kJf2GH80Ng/ZMctKZ511iamHNqPhd9uKo14yzisvV7Wt1EckIrb8oq/uCz3B3PpAW7Xfl7AkTLDYT6ag==
   /babel-plugin-dynamic-import-node/2.3.3:
     dependencies:
       object.assign: 4.1.2
@@ -2187,6 +2231,13 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-OUrYG9iKPKz8NxswXbRAdSwF0GhRdIEMTloQATJi4bDuFqrXaXcCUT/VGNrr8pBcjMh1RxZ7Xt9cytVJTJfvMg==
+  /babel-runtime/6.26.0:
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+    resolution:
+      integrity: sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
   /balanced-match/1.0.0:
     dev: true
     resolution:
@@ -3065,6 +3116,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-jXAirMQxrkbiiLsCx9bQPJFA6llDadKMpYrBJQJ3/c4/vsPP/fAf29h24tviRlvwUL6AmY5CHLu2GvjuYviQqA==
+  /core-js/2.6.12:
+    deprecated: core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.
+    dev: false
+    requiresBuild: true
+    resolution:
+      integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
   /core-js/3.9.1:
     requiresBuild: true
     resolution:
@@ -3411,7 +3468,6 @@ packages:
     resolution:
       integrity: sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
   /deepmerge/1.5.2:
-    dev: true
     engines:
       node: '>=0.10.0'
     resolution:
@@ -3692,6 +3748,20 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
+  /element-ui/2.15.1_vue@2.6.12:
+    dependencies:
+      async-validator: 1.8.5
+      babel-helper-vue-jsx-merge-props: 2.0.3
+      deepmerge: 1.5.2
+      normalize-wheel: 1.0.1
+      resize-observer-polyfill: 1.5.1
+      throttle-debounce: 1.1.0
+      vue: 2.6.12
+    dev: false
+    peerDependencies:
+      vue: ^2.5.17
+    resolution:
+      integrity: sha512-TqlScAKGH97XndSScUDeEHIzL1x7yg7DvQdKPEOUdiDcyIz3y3FJJBlpHYaJT96FOn1xpIcUZb+I2FJeU9EcrQ==
   /elliptic/6.5.4:
     dependencies:
       bn.js: 4.12.0
@@ -4548,10 +4618,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==
-  /follow-redirects/1.13.3_debug@4.3.1:
-    dependencies:
-      debug: 4.3.1
-    dev: true
+  /follow-redirects/1.13.3:
     engines:
       node: '>=4.0'
     peerDependencies:
@@ -5144,7 +5211,7 @@ packages:
   /http-proxy/1.18.1_debug@4.3.1:
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.13.3_debug@4.3.1
+      follow-redirects: 1.13.3
       requires-port: 1.0.0
     dev: true
     engines:
@@ -6712,6 +6779,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+  /normalize-wheel/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-rsiGr/2wRQcNhWRH32Ls+GFG7EU=
   /npm-run-path/2.0.2:
     dependencies:
       path-key: 2.0.1
@@ -7962,6 +8033,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
+  /regenerator-runtime/0.11.1:
+    dev: false
+    resolution:
+      integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   /regenerator-runtime/0.13.7:
     dev: true
     resolution:
@@ -8100,6 +8175,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+  /resize-observer-polyfill/1.5.1:
+    dev: false
+    resolution:
+      integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
   /resolve-cwd/2.0.0:
     dependencies:
       resolve-from: 3.0.0
@@ -9034,6 +9113,12 @@ packages:
       webpack: ^2.0.0 || ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha512-wNrVKH2Lcf8ZrWxDF/khdlLlsTMczdcwPA9VEK4c2exlEPynYWxi9op3nPTo5lAnDIkE0rQEB3VBP+4Zncc9Hg==
+  /throttle-debounce/1.1.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-XH8UiPCQcWNuk2LYePibW/4qL97+ZQ1AN3FNXwZRBNPPowo/NRU5fAlDCSNBJIYCKbioZfuYtMhG4quqoJhVzg==
   /through/2.3.8:
     dev: true
     resolution:
@@ -9061,6 +9146,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+  /tiny-cookie/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-dTeGB5xkKjw9CyrMrWAPjeEZrCo=
   /tmp/0.0.33:
     dependencies:
       os-tmpdir: 1.0.2
@@ -9458,6 +9547,26 @@ packages:
     dev: true
     resolution:
       integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+  /vue-axios/3.2.4_axios@0.21.1+vue@2.6.12:
+    dependencies:
+      axios: 0.21.1
+      vue: 2.6.12
+    dev: false
+    peerDependencies:
+      axios: '>= 0.20.0'
+      vue: ^ 3.0.0 || ^ 2.0.0
+    resolution:
+      integrity: sha512-8Dgws6dwt+1LoKEU4HDzIPfaRgWHl0xLDLW6kxrAk/z3GAJ2thkajcXC4qZgmqj0cZRx/Z/dzooKi5HWtUQwxA==
+  /vue-cookie/1.1.4:
+    dependencies:
+      tiny-cookie: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha1-uLRtESvan5Oi9HAXwu1SgtIGT9o=
+  /vue-cookies/1.7.4:
+    dev: false
+    resolution:
+      integrity: sha512-mOS5Btr8V9zvAtkmQ7/TfqJIropOx7etDAgBywPCmHjvfJl2gFbH2XgoMghleLoyyMTi5eaJss0mPN7arMoslA==
   /vue-eslint-parser/7.6.0_eslint@6.8.0:
     dependencies:
       debug: 4.3.1
@@ -9478,6 +9587,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+  /vue-lazyload/1.3.3:
+    dev: false
+    resolution:
+      integrity: sha512-uHnq0FTEeNmqnbBC2aRKlmtd9LofMZ6Q3mWvgfLa+i9vhxU8fDK+nGs9c1iVT85axSua/AUnMttIq3xPaU9G3A==
   /vue-loader/15.9.6_fb85a9817f99bdf862e5e3a442a1fb91:
     dependencies:
       '@vue/component-compiler-utils': 3.2.0
@@ -9932,8 +10045,11 @@ specifiers:
   '@vue/cli-plugin-vuex': ~4.5.0
   '@vue/cli-service': ~4.5.0
   '@vue/eslint-config-standard': ^5.1.2
+  axios: ^0.21.1
   babel-eslint: ^10.1.0
+  babel-plugin-component: ^1.1.1
   core-js: ^3.6.5
+  element-ui: ^2.15.1
   eslint: ^6.7.2
   eslint-plugin-import: ^2.20.2
   eslint-plugin-node: ^11.1.0
@@ -9944,6 +10060,10 @@ specifiers:
   less-loader: ^5.0.0
   lint-staged: ^9.5.0
   vue: ^2.6.11
+  vue-axios: ^3.2.4
+  vue-cookie: ^1.1.4
+  vue-cookies: ^1.7.4
+  vue-lazyload: ^1.3.3
   vue-router: ^3.2.0
   vue-template-compiler: ^2.6.11
   vuex: ^3.4.0
