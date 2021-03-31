@@ -72,8 +72,12 @@ export default {
         // 如果为空不提交
         if (!valid) return false
         // 获取请求数据
-        const { data: res } = await this.axios.post('user/login', this.formLabelAlign)
+        const { data: res } = await this.axios.post('login/GetLoginByPhone', {
+          Account: this.formLabelAlign.username,
+          AdminPwd: this.formLabelAlign.password
+        })
         console.log(res)
+        this.$message.success('res.meta.msg')
         /*        // 弹出提示信息
         if (res.meta.status !== 200) {
           return this.$message({
