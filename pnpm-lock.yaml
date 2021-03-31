@@ -2,6 +2,7 @@ dependencies:
   axios: 0.21.1
   core-js: 3.9.1
   element-ui: 2.15.1_vue@2.6.12
+  mockjs: 1.1.0
   vue: 2.6.12
   vue-axios: 3.2.4_axios@0.21.1+vue@2.6.12
   vue-cookie: 1.1.4
@@ -2961,6 +2962,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+  /commander/7.2.0:
+    dev: false
+    engines:
+      node: '>= 10'
+    resolution:
+      integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
   /commondir/1.0.1:
     dev: true
     resolution:
@@ -6576,6 +6583,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
+  /mockjs/1.1.0:
+    dependencies:
+      commander: 7.2.0
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -10059,6 +10073,7 @@ specifiers:
   less: ^3.0.4
   less-loader: ^5.0.0
   lint-staged: ^9.5.0
+  mockjs: ^1.1.0
   vue: ^2.6.11
   vue-axios: ^3.2.4
   vue-cookie: ^1.1.4

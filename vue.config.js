@@ -4,7 +4,7 @@ module.exports = {
     port: 8081,
     proxy: {
       '/api': {
-        target: 'http://mall-pre.springboot.cn',
+        target: 'http://localhost',
         changeOrigin: true,
         pathRewrite: {
           '/api': ''

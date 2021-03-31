@@ -8,7 +8,10 @@ import VueCookie from 'vue-cookie'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+const moke = true
+if (moke) {
+  require('./mock/api')
+}
 Vue.config.productionTip = false
 Vue.use(VueAxios, Axios)
 Vue.use(ElementUI)
