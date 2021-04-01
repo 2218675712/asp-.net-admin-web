@@ -9,7 +9,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-const moke = false
+const moke = true
 
 if (moke) {
   require('./mock/api')
@@ -20,16 +20,14 @@ Vue.use(ElementUI)
 // 根据前端的跨域方式做调整
 // Axios.defaults.baseURL = '/api'
 Axios.defaults.baseURL = '/api'
-// 根据环境变量获取不同的请求地址
-// Axios.defaults.baseURL=env.baseURL
 // 设置请求超时
 Axios.defaults.timeout = 3000
-Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // 添加请求拦截器添加token
-Axios.interceptors.request.use((config) => {
+/*Axios.interceptors.request.use((config) => {
   config.headers.authorization = window.sessionStorage.getItem('token')
   return config
-})
+})*/
 /**
  * 接口错误拦截
  */

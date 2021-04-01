@@ -42,6 +42,37 @@
     </el-aside>
     <!--    主题区-->
     <el-container>
+      <!--      头部-->
+      <el-header>
+        <!--        Header-->
+        <div>
+          <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item><a href="#">活动管理</a></el-breadcrumb-item>
+            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+
+          </el-breadcrumb>
+        </div>
+        <el-row>
+          <el-dropdown>
+            <span class="el-dropdown-link ">
+           <el-avatar shape="square" size="medium"
+                      src="https://en.gravatar.com/userimage/150559412/fe90eb84b829e28765b0f81e535f8c15.jpg"
+                      class="avatar"
+           ></el-avatar>
+  </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <el-button @click="logout" type="text" class="logout">
+                  退出登录
+                </el-button>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+
+        </el-row>
+      </el-header>
+
       <!--      主体-->
       <el-main>
         <router-view></router-view>
@@ -87,10 +118,11 @@ export default {
      * @returns {Promise<ElMessageComponent>}
      */
     async getMenuList () {
-      /*      const { data: res } = await this.$http.get('menus')
+      const { data: res } = await this.axios.get('/menus')
+      console.log(res)
       // 返回错误信息
-      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
-      this.menuList = res.data */
+      // if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.menuList = res.data
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
@@ -105,11 +137,32 @@ export default {
   color: #333;
   text-align: center;
   line-height: 60px;
+
+  .avatar {
+    margin-top: 25px;
+    margin-right: 45px;
+  }
+
+  .An {
+    border: none;
+    font-size: 10px;
+  }
+
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #333333;
+  }
+
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
 }
 
 .el-aside {
   background-color: #F2F6FC;
   color: #333;
+  height: 100vh;
+  transition: all 0.3s;
 
   h5 {
     text-align: center;
@@ -154,11 +207,23 @@ body > .el-container {
 
 .toggle-button {
   width: 100%;
-  /*text-align: center;*/
   font-size: 14px;
 }
 
 .el-scrollbar {
   height: 100%;
+}
+
+.logout {
+  color: #606266;
+}
+</style>
+<style lang="less">
+.el-scrollbar__wrap::-webkit-scrollbar {
+  width: 0 !important
+}
+
+.el-header .el-breadcrumb__item {
+  margin-left: 2px !important;
 }
 </style>
