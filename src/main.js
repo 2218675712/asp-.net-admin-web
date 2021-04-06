@@ -5,15 +5,23 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import VueAMap from 'vue-amap'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
-const moke = false
+const moke = true
 if (moke) {
   require('./mock/api')
 }
 Vue.config.productionTip = false
+Vue.use(VueAMap)
+VueAMap.initAMapApiLoader({
+  key: 'cf8a25f617d748d62e5c9380c8e2c934',
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
+  // 默认高德 sdk 版本为 1.4.4
+  v: '1.4.4'
+})
 Vue.use(VueAxios, Axios)
 Vue.use(ElementUI) // global css
 // 根据前端的跨域方式做调整

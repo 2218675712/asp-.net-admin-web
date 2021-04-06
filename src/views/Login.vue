@@ -139,7 +139,10 @@ export default {
 }
 </style>
 <style lang="less">
-.el-input__inner {
-  background-color: #283443;
+.login_box{
+
+  .el-input__inner {
+    background-color: #283443;
+  }
 }
 </style>

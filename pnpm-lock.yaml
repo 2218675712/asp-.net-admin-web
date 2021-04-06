@@ -4,6 +4,7 @@ dependencies:
   element-ui: 2.15.1_vue@2.6.12
   mockjs: 1.1.0
   vue: 2.6.12
+  vue-amap: 0.5.10
   vue-axios: 3.2.4_axios@0.21.1+vue@2.6.12
   vue-cookie: 1.1.4
   vue-cookies: 1.7.4
@@ -2660,6 +2661,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-MIvur/3ygRkFHvodkyITyRuPkuc=
+  /camelcase/1.2.1:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-m7UwTS4LVmmLLHWLCKPqqdqlijk=
   /camelcase/2.1.1:
     dev: true
     engines:
@@ -9850,6 +9857,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
+  /uppercamelcase/1.1.0:
+    dependencies:
+      camelcase: 1.2.1
+    dev: false
+    resolution:
+      integrity: sha1-Mk2YprOvx+iolT4QZBUJsOTiP5c=
   /uri-js/4.4.1:
     dependencies:
       punycode: 2.1.1
@@ -9981,6 +9994,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+  /vue-amap/0.5.10:
+    dependencies:
+      uppercamelcase: 1.1.0
+    dev: false
+    engines:
+      core-js: ^2.5.0
+      node: '>= 4.0.0'
+      npm: '>= 3.0.0'
+    resolution:
+      integrity: sha512-9ViNCev1vx32+zZ5RvF/TmUZNbwL9QrdA2/OnD2GlXMfQBkJy7D08Vb7379t6guqnopDPtWJ8K6gg72h9+4GUg==
   /vue-axios/3.2.4_axios@0.21.1+vue@2.6.12:
     dependencies:
       axios: 0.21.1
@@ -10503,6 +10526,7 @@ specifiers:
   node-sass: ^5.0.0
   sass-loader: ^11.0.1
   vue: ^2.6.11
+  vue-amap: ^0.5.10
   vue-axios: ^3.2.4
   vue-cookie: ^1.1.4
   vue-cookies: ^1.7.4

@@ -13,6 +13,7 @@
     "element-ui": "^2.15.1",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",
+    "vue-amap": "^0.5.10",
     "vue-axios": "^3.2.4",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.7.4",

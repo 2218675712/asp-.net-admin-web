@@ -18,7 +18,7 @@
             >
               <template v-for="item in menuList">
                 <el-submenu
-                  :index="item.MenuPath"
+                  :index="item.MenuMethod"
                   :key="item.MenuID"
                   v-if="item.ChildLists.length"
                 >
@@ -29,7 +29,7 @@
 
                   <el-menu-item-group>
                     <el-menu-item
-                      :index="subItem.MenuPath"
+                      :index="subItem.MenuMethod"
                       :key="subItem.MenuID"
                       v-for="subItem in item.ChildLists"
                     >
@@ -38,7 +38,7 @@
                   </el-menu-item-group>
 
                 </el-submenu>
-                <el-menu-item v-else :index="item.MenuPath" :key="item.MenuID">
+                <el-menu-item v-else :index="item.MenuMethod" :key="item.MenuID">
                   {{ item.MenuText }}
                 </el-menu-item>
               </template>
@@ -67,7 +67,7 @@
                       src="https://en.gravatar.com/userimage/150559412/fe90eb84b829e28765b0f81e535f8c15.jpg"
                       class="avatar"
            ></el-avatar>
-  </span>
+            </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
                 <el-button @click="logout" type="text" class="logout">
@@ -76,7 +76,6 @@
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-
         </el-row>
       </el-header>
 
@@ -84,8 +83,6 @@
       <el-main>
         <router-view></router-view>
       </el-main>
-      <!--      底部-->
-      <el-footer>Footer</el-footer>
     </el-container>
   </el-container>
 </template>
@@ -110,7 +107,7 @@ export default {
   created () {
     this.getMenuList()
   },
-  // name: 'Home'
+  // student: 'Home'
   methods: {
     /**
      * 退出登录
