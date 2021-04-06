@@ -16,25 +16,32 @@
               :collapse-transition="false"
               router
             >
-              <el-submenu
-                :index="item.path+''"
-                :key="item.id"
-                v-for="item in menuList"
-              >
-                <template slot="title">
-                  <i :class="iconObj[item.id]"/>
-                  <span>{{ item.authName }}</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item
-                    :index="subItem.path"
-                    :key="subItem.id"
-                    v-for="subItem in item.children"
-                  >
-                    {{ subItem.authName }}
-                  </el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
+              <template v-for="item in menuList">
+                <el-submenu
+                  :index="item.MenuPath"
+                  :key="item.MenuID"
+                  v-if="item.ChildLists.length"
+                >
+                  <template slot="title">
+                    <i :class="iconObj[item.id]"/>
+                    <span>{{ item.MenuText }}</span>
+                  </template>
+
+                  <el-menu-item-group>
+                    <el-menu-item
+                      :index="subItem.MenuPath"
+                      :key="subItem.MenuID"
+                      v-for="subItem in item.ChildLists"
+                    >
+                      {{ subItem.MenuText }}
+                    </el-menu-item>
+                  </el-menu-item-group>
+
+                </el-submenu>
+                <el-menu-item v-else :index="item.MenuPath" :key="item.MenuID">
+                  {{ item.MenuText }}
+                </el-menu-item>
+              </template>
             </el-menu>
           </el-col>
         </el-row>
@@ -118,11 +125,12 @@ export default {
      * @returns {Promise<ElMessageComponent>}
      */
     async getMenuList () {
-      const { data: res } = await this.axios.get('/menus')
+      const { data: res } = await this.axios.post('HomePage/GetMenuByList')
       console.log(res)
-      // 返回错误信息
-      // if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menuList = res.data
+      // 返回错误信息
+      if (res.code !== 10000) return this.$message.error(res.message)
+      // const result = res.data
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
