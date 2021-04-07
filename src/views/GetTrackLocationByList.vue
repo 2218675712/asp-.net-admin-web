@@ -17,13 +17,14 @@
           <el-input v-model="form.student"></el-input>
         </el-form-item>
         <el-form-item label="选择时间段">
-          <el-col :span="11">
-            <el-date-picker type="date" placeholder="开始时间" v-model="form.date1" style="width: 100%;"></el-date-picker>
-          </el-col>
-          <el-col class="line" :span="2">至</el-col>
-          <el-col :span="11">
-            <el-date-picker type="date" placeholder="结束时间" v-model="form.date2" style="width: 100%;"></el-date-picker>
-          </el-col>
+
+          <el-date-picker
+            v-model="form.date1"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始时间"
+            end-placeholder="结束时间">
+          </el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" plain icon="el-icon-place" style="margin-left: 20px;">查询历史轨迹</el-button>
@@ -67,8 +68,7 @@ export default {
       zooms: [12, 18],
       form: {
         student: '',
-        date1: '',
-        date2: ''
+        date1: ''
       },
       place: '教学楼1楼',
       reverse: true,

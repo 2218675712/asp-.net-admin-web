@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home'
 import Login from '../views/Login'
 import GetTrackLocationByList from '../views/GetTrackLocationByList'
+import GetCheckTimeByClass from '../views/GetCheckTimeByClass'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,10 @@ const routes = [
       {
         path: '/GetTrackLocationByList',
         component: GetTrackLocationByList
+      },
+      {
+        path: '/GetCheckTimeByClass',
+        component: GetCheckTimeByClass
       }
     ]
   }, {

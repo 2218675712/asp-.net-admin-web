@@ -114,7 +114,6 @@ export default {
      */
     async getMenuList () {
       const { data: res } = await this.axios.post('HomePage/GetMenuByList')
-      console.log(res)
       this.menuList = res.data
       // 返回错误信息
       if (res.code !== 10000) return this.$message.error(res.message)
