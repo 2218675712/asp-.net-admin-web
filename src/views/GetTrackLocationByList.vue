@@ -6,7 +6,7 @@
 
     <el-card class="box-card selectStudentOrTeacher">
       <el-switch
-        v-model="value"
+        v-model="StudentOrTeacher"
         active-text="教师轨迹"
         inactive-text="学生轨迹">
       </el-switch>
@@ -62,6 +62,7 @@ export default {
   name: 'GetTrackLocationByList',
   data () {
     return {
+      StudentOrTeacher: true,
       mapLocation: [112.6043, 34.598151],
       zooms: [12, 18],
       form: {

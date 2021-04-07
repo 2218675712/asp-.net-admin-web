@@ -10,7 +10,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-const moke = true
+const moke = false
 if (moke) {
   require('./mock/api')
 }

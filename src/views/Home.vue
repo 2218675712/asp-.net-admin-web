@@ -15,6 +15,7 @@
               :collapse="isCollapse"
               :collapse-transition="false"
               router
+
             >
               <template v-for="item in menuList">
                 <el-submenu
@@ -23,8 +24,7 @@
                   v-if="item.ChildLists.length"
                 >
                   <template slot="title">
-                    <i :class="iconObj[item.id]"/>
-                    <span>{{ item.MenuText }}</span>
+                    <span @click="getBreadList">{{ item.MenuText }}</span>
                   </template>
 
                   <el-menu-item-group>
@@ -38,7 +38,7 @@
                   </el-menu-item-group>
 
                 </el-submenu>
-                <el-menu-item v-else :index="item.MenuMethod" :key="item.MenuID">
+                <el-menu-item v-else :index="item.MenuMethod" :key="item.MenuID" @click="getBreadList">
                   {{ item.MenuText }}
                 </el-menu-item>
               </template>
@@ -53,12 +53,7 @@
       <el-header>
         <!--        Header-->
         <div>
-          <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item><a href="#">活动管理</a></el-breadcrumb-item>
-            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-
-          </el-breadcrumb>
+          <Breadcrumb :current-path="breads"></Breadcrumb>
         </div>
         <el-row>
           <el-dropdown>
@@ -88,20 +83,16 @@
 </template>
 
 <script>
+import Breadcrumb from '../components/Breadcrumb'
+
 export default {
+  components: { Breadcrumb },
   data () {
     return {
       // 侧边栏数据
       menuList: [],
-      // 侧边栏图标
-      iconObj: {
-        125: 'el-icon-user',
-        103: 'el-icon-coordinate',
-        101: 'el-icon-shopping-cart-full',
-        102: 'el-icon-document',
-        145: 'el-icon-coin'
-      },
-      isCollapse: false
+      isCollapse: false,
+      breads: []
     }
   },
   created () {
@@ -129,10 +120,18 @@ export default {
       if (res.code !== 10000) return this.$message.error(res.message)
       // const result = res.data
     },
+    /**
+     * 切换侧边栏
+     */
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
+    },
+
+    getBreadList (event) {
+      this.breads = [event.$el.innerText]
     }
   }
+
 }
 </script>
 
@@ -228,7 +227,4 @@ body > .el-container {
   width: 0 !important
 }
 
-.el-header .el-breadcrumb__item {
-  margin-left: 2px !important;
-}
 </style>
