@@ -60,7 +60,7 @@
 
 <script>
 export default {
-  name: 'GetTrackLocationByList',
+  name: 'TrackLocation',
   data () {
     return {
       StudentOrTeacher: true,

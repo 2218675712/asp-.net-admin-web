@@ -1,16 +1,21 @@
 import Vue from 'vue'
 import Axios from 'axios'
+// 在main.js引入qs
+import qs from 'qs'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import VueAMap from 'vue-amap'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 配全局属性配置，在任意组件内可以使用this.$qs获取qs对象
+Vue.prototype.$qs = qs
 
-const moke = true
+const moke = false
 if (moke) {
   require('./mock/api')
 }
@@ -29,7 +34,7 @@ Vue.use(ElementUI) // global css
 Axios.defaults.baseURL = '/api'
 // 设置请求超时
 Axios.defaults.timeout = 3000
-// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // 添加请求拦截器添加token
 /* Axios.interceptors.request.use((config) => {
   config.headers.authorization = window.sessionStorage.getItem('token')

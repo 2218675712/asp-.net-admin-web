@@ -135,11 +135,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-header, .el-footer {
-  background-color: #DCDFE6;
+.el-header  {
+  background-color: #ffffff;
   color: #333;
   text-align: center;
   line-height: 60px;
+  border-bottom: 1px solid #dcdfe6;
 
   .avatar {
     margin-top: 25px;
@@ -173,7 +174,7 @@ export default {
 }
 
 .el-main {
-  background-color: #EBEEF5;
+  //background-color: #EBEEF5;
   color: #333;
   text-align: center;
 }

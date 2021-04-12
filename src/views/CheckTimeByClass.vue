@@ -1,5 +1,5 @@
 <template>
-  <div class="GetCheckTimeByClass">
+  <div class="CheckTimeByClass">
     <!--    提交表单-->
     <h1>考勤日程设置</h1>
     <el-divider></el-divider>
@@ -9,13 +9,13 @@
           <div class="radio1">
             <el-radio label="1">考勤时间模板1</el-radio>
             <el-link type="success" @click="EditDialog('1')">编辑</el-link>
-            <el-link @click="dialogTable1=!dialogTable1">查看</el-link>
+            <el-link @click="ShowDialog('1')">查看</el-link>
           </div>
           <br/>
           <div class="radio2">
             <el-radio label="2">考勤时间模板2</el-radio>
-            <el-link type="success" @click="EditDialog('1')">编辑</el-link>
-            <el-link @click="dialogTable1=!dialogTable1">查看</el-link>
+            <el-link type="success" @click="EditDialog('2')">编辑</el-link>
+            <el-link @click="ShowDialog('2')">查看</el-link>
           </div>
         </el-radio-group>
       </el-form-item>
@@ -36,70 +36,97 @@
         </el-option>
       </el-select>
       <div class="btn_g">
-        <el-button>重置</el-button>
-        <el-button type="primary">查询</el-button>
+        <el-button @click="CurriculumList=[]">重置</el-button>
+        <el-button type="primary" @click="GetCurriculumList">查询</el-button>
       </div>
 
     </div>
 
     <el-divider></el-divider>
-    <!--    日程表展示-->
+    <!--    课程表展示-->
     <el-table
-      :data="tableData"
+      :data="CurriculumList"
       border
       style="width: 100%">
 
       <el-table-column
-        prop="date"
+        prop="Schedule"
         label="时间"
         width="180">
+        <template slot-scope="scope">
+          {{ scope.row.StartTime }}-{{ scope.row.EndTime }}
+
+        </template>
       </el-table-column>
       <el-table-column
-        prop="d1"
+        prop="Curriculum1"
         label="星期一"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d2"
+        prop="Curriculum2"
         label="星期二"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d3"
+        prop="Curriculum3"
         label="星期三"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d4"
+        prop="Curriculum4"
         label="星期四"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d5"
+        prop="Curriculum5"
         label="星期五"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d6"
+        prop="Curriculum6"
         label="星期六"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="d7"
+        prop="Curriculum7"
         label="星期日"
         width="150">
       </el-table-column>
     </el-table>
     <!--    对话弹出框-->
     <el-dialog title="查看日常表" :visible.sync="dialogTable1">
-
+      <el-table
+        :data="scheduleForm"
+        border
+        style="width: 100%"
+      >
+        <el-table-column
+          label="日程"
+          width="150"
+          prop="Schedule"
+        >
+        </el-table-column>
+        <el-table-column
+          label="起始时间"
+          width="260"
+          prop="StartTime"
+        >
+        </el-table-column>
+        <el-table-column
+          label="结束时间"
+          width="260"
+          prop="EndTime"
+        >
+        </el-table-column>
+      </el-table>
     </el-dialog>
     <el-dialog title="修改日程表" :visible.sync="dialogTable2" width="910px">
       <el-row>
         <el-button
           type="primary"
           plain icon="el-icon-circle-plus-outline"
-          style="margin-left: -600px; margin-bottom: 30px;"
+          style="margin-left: -750px; margin-bottom: 30px;"
           @click="AddRow">添加新行
         </el-button>
       </el-row>
@@ -116,7 +143,7 @@
         <el-table-column
           label="序号"
           width="50"
-          prop="ScheduleID"
+          type="index"
         >
         </el-table-column>
         <el-table-column
@@ -168,13 +195,15 @@
 
         </el-table-column>
         <el-table-column label="删除" width="100">
-          <el-button type="danger" plain>删除</el-button>
+          <template slot-scope="scope">
+            <el-button type="danger" plain @click="DeleteRow(scope.$index)">删除</el-button>
+          </template>
 
         </el-table-column>
       </el-table>
       <span slot="footer" class="dialog-footer">
     <el-button @click="dialogTable2 =false">取 消</el-button>
-    <el-button type="primary" @click="dialogTable2 =false">确 定</el-button>
+    <el-button type="primary" @click="ChangeSchedule">确 定</el-button>
   </span>
     </el-dialog>
   </div>
@@ -182,54 +211,40 @@
 
 <script>
 export default {
-  name: 'GetCheckTimeByClass',
+  name: 'CheckTimeByClass',
   data () {
     return {
+      // 1是模板1,2是模板2
       form: {
         resource: '1'
       },
       options: [{
-        value: '选项1',
-        label: '黄金糕'
+        value: '1',
+        label: '1-1班'
       }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
+        value: '2',
+        label: '2-1班'
       }],
+      // 选中的班级
       value: '',
-      tableData: [{
-        date: '2016-05-02',
-        d1: '语文',
-        d2: '数学',
-        d3: '英语',
-        d4: '科学',
-        d5: '地理',
-        d6: '历史',
-        d7: '生物'
-      }],
+      // 课程表展示
+      CurriculumList: [],
+      // 显示日程表是否显示
       dialogTable1: false,
+      // 修改日程表是否显示
       dialogTable2: false,
+      // 日程表
       scheduleForm: []
     }
   },
   methods: {
-    onSubmit () {
-      console.log('submit!')
-    },
+
     /**
      * 获取要修改的日程表
      *
      */
     async GetScheduleList () {
-      const { data: res } = await this.axios.post('Schedule/GetScheduleList', { ScheduleType: this.form.resource })
+      const { data: res } = await this.axios.post('ScheduleManager/GetScheduleList', { ScheduleType: this.form.resource })
       this.scheduleForm = res.data
     },
     /**
@@ -241,11 +256,23 @@ export default {
       this.GetScheduleList()
       this.dialogTable2 = !this.dialogTable2
     },
+
+    /**
+     * 展示模态框
+     * @param type 是模板1还是2
+     * @constructor
+     */
+    ShowDialog (type) {
+      this.GetScheduleList()
+      this.dialogTable1 = !this.dialogTable1
+    },
+    /*
+    * 添加行
+    * */
     AddRow () {
       // 向表格数组中数据添加一行
       this.scheduleForm.push({
         ScheduleID: this.scheduleForm.length + 1,
-        Serial: this.scheduleForm.length + 1,
         Schedule: '',
         StartTime: '',
         EndTime: '',
@@ -253,16 +280,63 @@ export default {
         IsDelete: false
       })
     },
-    // 删除按钮
+    /**
+     *  删除行
+     * @param row
+     * @constructor
+     */
     DeleteRow (row) {
-      this.scheduleForm.splice(row.index, 1)
+      this.$confirm('此操作将永久删除该行, 是否继续?', '危险', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'error'
+      }).then(() => {
+        console.log(row)
+        const re1 = this.scheduleForm.splice(row - 1, 1)
+        console.log(re1)
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
+    },
+    /**
+     * 获取课程表
+     * @returns {Promise<void>}
+     * @constructor
+     */
+    async GetCurriculumList () {
+      const { data: res } = await this.axios.post('CurriculumList/GetCurriculumList')
+      this.CurriculumList = res.data
+    },
+    /**
+     * 修改日程表进行提交
+     * @returns {Promise<void>}
+     * @constructor
+     */
+    async ChangeSchedule () {
+      const { data: res } = await this.axios.post('ScheduleManager/ChangeSchedule', this.$qs.stringify({
+        ScheduleType: this.form.resource,
+        data: JSON.stringify(this.scheduleForm)
+      }))
+      if (res.code === 10000) {
+        this.$message(res.message)
+        this.dialogTable2 = false
+      } else {
+        this.$message(res.message)
+      }
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-.GetCheckTimeByClass {
+.CheckTimeByClass {
   h1 {
     font-size: 18px;
     text-align: left;
@@ -315,7 +389,7 @@ export default {
 </style>
 
 <style lang="less">
-.GetCheckTimeByClass {
+.CheckTimeByClass {
 
 }
 

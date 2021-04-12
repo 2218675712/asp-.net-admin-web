@@ -2,8 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
 import Login from '../views/Login'
-import GetTrackLocationByList from '../views/GetTrackLocationByList'
-import GetCheckTimeByClass from '../views/GetCheckTimeByClass'
+import TrackLocation from '../views/TrackLocation'
+import CheckTimeByClass from '../views/CheckTimeByClass'
+import LeaveByList from '../views/LeaveByList'
 
 Vue.use(VueRouter)
 
@@ -15,11 +16,16 @@ const routes = [
     children: [
       {
         path: '/GetTrackLocationByList',
-        component: GetTrackLocationByList
+        component: TrackLocation
       },
       {
         path: '/GetCheckTimeByClass',
-        component: GetCheckTimeByClass
+        component: CheckTimeByClass
+      },
+
+      {
+        path: '/GetLeaveByList',
+        component: LeaveByList
       }
     ]
   }, {
