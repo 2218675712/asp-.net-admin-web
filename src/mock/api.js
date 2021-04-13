@@ -277,3 +277,22 @@ Mock.mock('/api/LeaveManager/GetLeaveList', {
     }
   ]
 })
+
+Mock.mock('/api/AttendanceList/GetAttendanceByList', {
+  code: 10000,
+  result: true,
+  message: '查询成功!',
+  data: [
+    {
+      StudentName: '时光如画梦如水',
+      StudentNum: 1,
+      ClassName: '计算机编程一班',
+      Department: '信息与城建',
+      TeacherName: '彭于晏',
+      TeacherNum: 1,
+      TrackInformation: '轨道信息',
+      IsDelete: false
+    }
+  ]
+}
+)

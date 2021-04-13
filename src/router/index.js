@@ -5,6 +5,7 @@ import Login from '../views/Login'
 import TrackLocation from '../views/TrackLocation'
 import CheckTimeByClass from '../views/CheckTimeByClass'
 import LeaveByList from '../views/LeaveByList'
+import AttendanceList from '../views/AttendanceList'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [
       {
         path: '/GetLeaveByList',
         component: LeaveByList
+      },
+
+      {
+        path: '/GetAttendanceByList',
+        component: AttendanceList
       }
     ]
   }, {
