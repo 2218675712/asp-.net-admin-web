@@ -24,7 +24,7 @@
                   v-if="item.ChildLists.length"
                 >
                   <template slot="title">
-                    <span @click="getBreadList">{{ item.MenuText }}</span>
+                    <span>{{ item.MenuText }}</span>
                   </template>
 
                   <el-menu-item-group>
@@ -32,6 +32,7 @@
                       :index="subItem.MenuMethod"
                       :key="subItem.MenuID"
                       v-for="subItem in item.ChildLists"
+                      @click="getBreadList"
                     >
                       {{ subItem.MenuText }}
                     </el-menu-item>
@@ -128,6 +129,7 @@ export default {
 
     getBreadList (event) {
       this.breads = [event.$el.innerText]
+      console.log([event.$el.innerText])
     }
   }
 
@@ -135,7 +137,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-header  {
+.el-header {
   background-color: #ffffff;
   color: #333;
   text-align: center;

@@ -209,25 +209,71 @@ Mock.mock('/api/CurriculumList/GetCurriculumList', {
       IsDelete: false
     }
   ]
-}
-)
+})
 Mock.mock('/api/LeaveManager/GetLeaveList', {
-  code: 10000,
+  code: 13,
   result: true,
-  message: '查询成功!',
+  message: 'id magna amet ad Duis',
   data: [
     {
-      LeaveID: 'c5d2d80a-9601-451a-ad4f-359648bb3102',
-      LeaveStuName: '崔南均',
-      LeaveStuNum: '20172310206',
-      LeaveStuDepartment: '艺术系',
-      LeaveStuGrade: '2017',
-      LeaveStuClass: '17艺术1班',
-      LeaveStuReasons: '吉他考试',
-      Teacher: '茉莉味的冰绿茶',
-      TeacherNum: '20172310207',
+      LeaveStuGrade: 'aute deserunt commodo elit ut',
+      TeacherNum: '16',
+      LeaveStuDepartment: 'enim minim et',
+      IsDelete: true,
+      LeaveStuNum: '63',
+      LeaveStuName: '厂物根身传三',
+      LeaveStuReasons: 'ex Ut mollit enim',
+      LeaveID: '65',
+      LeaveStuClass: 'eiusmod proident commodo culpa elit',
+      Teacher: 'eiusmod ut sint proident'
+    },
+    {
+      LeaveStuNum: '23',
+      LeaveStuName: '电议做子发',
+      LeaveStuDepartment: 'occaecat',
+      LeaveID: '94',
+      LeaveStuClass: 'velit',
+      LeaveStuReasons: 'eu dolor deserunt',
+      IsDelete: true,
+      LeaveStuGrade: 'nisi occaecat ullamco',
+      TeacherNum: '2',
+      Teacher: 'ex et'
+    },
+    {
+      LeaveID: '12',
+      LeaveStuReasons: 'exercitation',
+      LeaveStuNum: '27',
+      LeaveStuGrade: 'do aute',
+      TeacherNum: '7',
+      Teacher: 'enim elit sint exercitation',
+      LeaveStuDepartment: 'Ut esse dolor',
+      LeaveStuClass: 'adipisicing nisi nulla nostrud ipsum',
+      LeaveStuName: '相风线铁',
       IsDelete: false
+    },
+    {
+      Teacher: 'aute nisi in proident',
+      LeaveStuDepartment: 'et mollit',
+      LeaveID: '37',
+      LeaveStuName: '角地我常技只',
+      IsDelete: false,
+      LeaveStuGrade: 'enim ullamco mollit occaecat ut',
+      LeaveStuReasons: 'aliqua veniam velit magna',
+      LeaveStuClass: 'qui deserunt aute ullamco',
+      TeacherNum: '78',
+      LeaveStuNum: '38'
+    },
+    {
+      LeaveStuName: '强么品长展',
+      LeaveStuDepartment: 'Lorem nisi',
+      LeaveID: '15',
+      Teacher: 'sed elit proident incididunt',
+      TeacherNum: '52',
+      IsDelete: false,
+      LeaveStuClass: 'nisi',
+      LeaveStuNum: '60',
+      LeaveStuReasons: 'esse culpa dolor cillum',
+      LeaveStuGrade: 'pariatur sint'
     }
   ]
-}
-)
+})
