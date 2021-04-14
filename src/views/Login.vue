@@ -77,15 +77,14 @@ export default {
           AdminPwd: this.formLabelAlign.password
         })
         console.log(res)
-        this.$message.success('res.meta.msg')
-        /*        // 弹出提示信息
-        if (res.meta.status !== 200) {
-          return this.$message({
-            message: res.meta.msg,
-            type: 'error'
-          })
+        if (res.code === 10000) {
+          this.$message.success(res.message)
+          setTimeout(() => {
+            this.$router.push('/GetTrackLocationByList')
+          }, 1000)
+        } else if (res.code === 10001) {
+          this.$message.error(res.message)
         }
-        this.$message.success(res.meta.msg) */
         /*        // 保存session
         window.sessionStorage.setItem('token', res.data.token)
         // 跳转到主页

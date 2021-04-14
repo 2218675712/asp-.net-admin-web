@@ -6,7 +6,7 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueLazyload from 'vue-lazyload'
-import VueCookie from 'vue-cookie'
+import VueCookies from 'vue-cookies'
 import VueAMap from 'vue-amap'
 
 import App from './App.vue'
@@ -31,39 +31,47 @@ Vue.use(VueAxios, Axios)
 Vue.use(ElementUI) // global css
 // 根据前端的跨域方式做调整
 // Axios.defaults.baseURL = '/api'
-Axios.defaults.baseURL = '/api'
+Axios.defaults.baseURL = '/S1mple_SchoolManager'
 // 设置请求超时
 Axios.defaults.timeout = 3000
+// 设置post请求为form表单
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-// 添加请求拦截器添加token
-/* Axios.interceptors.request.use((config) => {
-  config.headers.authorization = window.sessionStorage.getItem('token')
-  return config
-}) */
+// 带上coolie配置为true
+Axios.defaults.withCredentials = false
+
 /**
  * 接口错误拦截
  */
-/* Axios.interceptors.response.use(function (response) {
+Axios.interceptors.response.use(function (response) {
   const res = response.data
   const path = location.hash
-  // eslint-disable-next-line eqeqeq
-  if (res.status === 10000) {
-    return res.data
-  } else if (res.status === 10001) {
-    if (path !== '#/index') {
+  if (res.code === 10000) {
+    return response
+  } else if (res.code === 10002) {
+    if (path !== '#/login') {
+      ElementUI.Message({
+        message: res.message,
+        type: 'error'
+      })
       window.location.href = '/#/login'
     }
     return Promise.reject(res)
   } else {
-    this.$message.warning(res.msg)
+    ElementUI.Message({
+      message: res.message,
+      type: 'warning'
+    })
     return Promise.reject(res)
   }
 }, (error) => {
   const res = error.response
-  this.$message.error(res.data.message)
+  ElementUI.Message({
+    message: res.data.message,
+    type: 'error'
+  })
   return Promise.reject(error)
-}) */
-Vue.use(VueCookie)
+})
+Vue.use(VueCookies)
 Vue.use(VueLazyload, {
   loading: '/imgs/loading-svg/loading-bars.svg'
 })
