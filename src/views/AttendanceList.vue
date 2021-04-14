@@ -11,7 +11,7 @@
         <el-form-item label="查询条件:" prop="_search">
           <el-input
             v-model="searchForm._search"
-            placeholder="请输入学生姓名、学生学号、教师姓名、教师工号等信息"
+            placeholder="请输入学生姓名、教师姓名等信息"
             style="width: 500px"></el-input>
         </el-form-item>
         <el-form-item>

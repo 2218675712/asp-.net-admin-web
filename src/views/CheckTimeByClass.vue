@@ -244,7 +244,7 @@ export default {
      *
      */
     async GetScheduleList () {
-      const { data: res } = await this.axios.post('ScheduleManager/GetScheduleList', { ScheduleType: this.form.resource })
+      const { data: res } = await this.axios.post('ScheduleManager/GetCheckTimeByClass', { ScheduleType: this.form.resource })
       this.scheduleForm = res.data
     },
     /**
@@ -291,8 +291,7 @@ export default {
         cancelButtonText: '取消',
         type: 'error'
       }).then(() => {
-        console.log(row)
-        const re1 = this.scheduleForm.splice(row - 1, 1)
+        const re1 = this.scheduleForm.splice(row, 1)
         console.log(re1)
         this.$message({
           type: 'success',

@@ -15,7 +15,7 @@ import store from './store'
 // 配全局属性配置，在任意组件内可以使用this.$qs获取qs对象
 Vue.prototype.$qs = qs
 
-const moke = true
+const moke = false
 if (moke) {
   require('./mock/api')
 }
