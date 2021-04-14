@@ -97,21 +97,30 @@ export default {
     Search () {
       this.getData(10, 1, this.searchForm._search)
     },
-    // TODO 校对后台数据
     // 将页码，及每页显示的条数以参数传递提交给后台
     async getData (n1, n2, n3 = '') {
+      if (n3 === '') {
+        this.$message('学生姓名输入不能为空')
+        return
+      }
       // 这里使用axios，使用时请提前引入
-      const { data: res } = await this.axios.post('AttendanceList/GetAttendanceByList', {
+      const { data: res } = await this.axios.post('AttendanceList/GetCheckWorkByStudent', this.$qs.stringify({
         // 每页显示的条数
         PageSize: n1,
         // 显示第几页
         currentPage: n2,
         // 搜索内容,默认为空
-        _search: ''
-      })
-      this.tableData = res.data
+        _search: n3
+      }))
+      if (res.code === 10000) {
+        this.tableData = res.data
+        this.totalCount = res.data.length
+      } else if (res.code === 10001) {
+        this.$message(res.message)
+      }
+      // this.tableData = res.data
       // 将数据的长度赋值给totalCount
-      this.totalCount = res.data.length
+      // this.totalCount = res.data.length
     },
     // 分页
     // 每页显示的条数
@@ -133,18 +142,6 @@ export default {
     // 清空表单
     resetForm (formName) {
       this.$refs[formName].resetFields()
-    },
-    // TODO 修改状态
-    // 修改学生请假状态
-    asyncChangeLeave (state, event) {
-      console.log(state, event)
-      const { data: res } = this.axios.post('', {
-        state,
-        event
-      })
-      if (res.state === 10000) {
-        this.$message(res.message)
-      }
     }
   },
   created () {

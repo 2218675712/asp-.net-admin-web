@@ -137,7 +137,7 @@ export default {
         // 显示第几页
         currentPage: n2,
         // 搜索内容,默认为空
-        _search: ''
+        _search: n3
       })
       this.tableData = res.data
       // 将数据的长度赋值给totalCount

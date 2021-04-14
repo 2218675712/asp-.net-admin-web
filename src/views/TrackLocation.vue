@@ -27,8 +27,10 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" plain icon="el-icon-place" style="margin-left: 20px;">查询历史轨迹</el-button>
-          <el-button type="primary" plain icon="el-icon-place" style="margin-right: 20px;">查询当前定位</el-button>
+          <el-button type="primary" plain icon="el-icon-place" style="margin-left: 18px;"  @click="GetLocationByList">查询历史轨迹</el-button>
+          <el-button type="primary" plain icon="el-icon-place" style="margin-right: 18px;" @click="GetLocationByList">
+            查询当前定位
+          </el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -48,8 +50,8 @@
           <el-timeline-item
             v-for="(activity, index) in activities"
             :key="index"
-            :timestamp="activity.timestamp">
-            {{ activity.content }}
+            :timestamp="activity.Time">
+            {{ activity.Locus }}
           </el-timeline-item>
         </el-timeline>
       </div>
@@ -63,7 +65,7 @@ export default {
   name: 'TrackLocation',
   data () {
     return {
-      StudentOrTeacher: true,
+      StudentOrTeacher: false,
       mapLocation: [112.6043, 34.598151],
       zooms: [12, 18],
       form: {
@@ -72,21 +74,29 @@ export default {
       },
       place: '教学楼1楼',
       reverse: true,
-      activities: [{
-        content: '活动按期开始',
-        timestamp: '2018-04-15'
-      }, {
-        content: '通过审核',
-        timestamp: '2018-04-13'
-      }, {
-        content: '创建成功',
-        timestamp: '2018-04-11'
-      }]
+      activities: []
     }
   },
   methods: {
-    onSubmit () {
-      console.log('submit!')
+    async GetLocationByList () {
+      if (this.form.student === '') {
+        this.$message('学生姓名输入不能为空')
+        return
+      }
+      let url = ''
+      if (!this.StudentOrTeacher) {
+        url = 'LocationManager/GetTrackLocationByList'
+      } else {
+        url = 'LocationManager/GetTeacherLocationList'
+      }
+      const { data: res } = await this.axios.post(url, {
+        StudentName: this.form.student
+      })
+      if (res.code === 10000) {
+        this.activities = res.data
+      } else if (res.code === 10001) {
+        this.$message(res.message)
+      }
     }
   }
 }
