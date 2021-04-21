@@ -6,6 +6,9 @@ import TrackLocation from '../views/TrackLocation'
 import CheckTimeByClass from '../views/CheckTimeByClass'
 import LeaveByList from '../views/LeaveByList'
 import AttendanceList from '../views/AttendanceList'
+import PersonalInfo from '../views/Student/PersonalInfo'
+import StudentHome from '../views/Student/Home'
+import ModifyInformation from '../views/Student/ModifyInformation'
 
 Vue.use(VueRouter)
 
@@ -38,6 +41,25 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/Student',
+    name: 'Student',
+    component: StudentHome,
+    children: [
+      {
+        path: '/Home',
+        component: StudentHome
+      },
+      {
+        path: '/PersonalInfo',
+        component: PersonalInfo
+      },
+      {
+        path: '/ModifyInformation',
+        component: ModifyInformation
+      }
+    ]
   }
 ]
 

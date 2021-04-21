@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import VueAMap from 'vue-amap'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
 import App from './App.vue'
 import router from './router'
@@ -15,7 +17,7 @@ import store from './store'
 // 配全局属性配置，在任意组件内可以使用this.$qs获取qs对象
 Vue.prototype.$qs = qs
 
-const moke = true
+const moke = false
 if (moke) {
   require('./mock/api')
 }
@@ -29,6 +31,7 @@ VueAMap.initAMapApiLoader({
 })
 Vue.use(VueAxios, Axios)
 Vue.use(ElementUI) // global css
+Vue.use(Vant)
 // 根据前端的跨域方式做调整
 // Axios.defaults.baseURL = '/api'
 Axios.defaults.baseURL = '/api'
@@ -55,7 +58,7 @@ Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
     }
     return Promise.reject(res)
   } else {
-    this.$message.warning(res.msg)
+    this.$message.warning(res.message)
     return Promise.reject(res)
   }
 }, (error) => {
