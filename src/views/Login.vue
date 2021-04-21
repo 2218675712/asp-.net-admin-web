@@ -45,8 +45,8 @@ export default {
         },
         {
           min: 4,
-          max: 12,
-          message: '长度在 4 到 12 个字符',
+          max: 18,
+          message: '长度在 4 到 18 个字符',
           trigger: 'blur'
         }],
         password: [{
@@ -74,22 +74,23 @@ export default {
         // 获取请求数据
         const { data: res } = await this.axios.post('login/GetLoginByPhone', {
           Account: this.formLabelAlign.username,
-          AdminPwd: this.formLabelAlign.password
+          Password: this.formLabelAlign.password
         })
         console.log(res)
-        this.$message.success('res.meta.msg')
-        /*        // 弹出提示信息
-        if (res.meta.status !== 200) {
-          return this.$message({
-            message: res.meta.msg,
-            type: 'error'
-          })
+        if (res.code === 10000) {
+          this.$message.success(res.message)
+          if (res.returnType === 1) {
+            setTimeout(() => {
+              this.$router.push('/GetTrackLocationByList')
+            }, 1000)
+          } else if (res.returnType === 2) {
+            setTimeout(() => {
+              this.$router.push('/Student')
+            }, 1000)
+          }
+        } else if (res.code === 10001) {
+          this.$message.error(res.message)
         }
-        this.$message.success(res.meta.msg) */
-        /*        // 保存session
-        window.sessionStorage.setItem('token', res.data.token)
-        // 跳转到主页
-        await this.$router.push('/home') */
       })
     },
     /**

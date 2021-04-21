@@ -11,7 +11,7 @@
         <el-form-item label="查询条件:" prop="_search">
           <el-input
             v-model="searchForm._search"
-            placeholder="请输入学生姓名、学生学号、教师姓名、教师工号等信息"
+            placeholder="请输入学生姓名、教师姓名等信息"
             style="width: 500px"></el-input>
         </el-form-item>
         <el-form-item>
@@ -56,7 +56,7 @@
           prop="t7"
           label="请假状态">
           <template slot-scope="scope">
-            <el-select v-model="scope.row.zhuangtai" placeholder="请选择" @change="ChangeLeave(scope.row.LeaveID,$event)">
+            <el-select v-model="scope.row.state" placeholder="请选择" @change="ChangeLeave(scope.row.LeaveID,$event)">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -110,7 +110,6 @@ export default {
       pageSizes: [2, 4, 10, 20],
       // 默认每页显示的条数（可修改）
       PageSize: 1,
-      // TODO 让后端添加字段
       options: [{
         value: 0,
         label: '未审核'
@@ -129,17 +128,16 @@ export default {
     Search () {
       this.getData(10, 1, this.searchForm._search)
     },
-    // TODO 校对后台数据
     // 将页码，及每页显示的条数以参数传递提交给后台
     async getData (n1, n2, n3 = '') {
       // 这里使用axios，使用时请提前引入
-      const { data: res } = await this.axios.post('LeaveManager/GetLeaveList', {
+      const { data: res } = await this.axios.post('LeaveManager/GetLeaveByList', {
         // 每页显示的条数
         PageSize: n1,
         // 显示第几页
         currentPage: n2,
         // 搜索内容,默认为空
-        _search: ''
+        _search: n3
       })
       this.tableData = res.data
       // 将数据的长度赋值给totalCount
@@ -166,15 +164,13 @@ export default {
     resetForm (formName) {
       this.$refs[formName].resetFields()
     },
-    // TODO 修改状态
     // 修改学生请假状态
-    asyncChangeLeave (state, event) {
-      console.log(state, event)
-      const { data: res } = this.axios.post('', {
+    async ChangeLeave (state, num) {
+      const { data: res } = await this.axios.post('LeaveManager/ChangeLeave', this.$qs.stringify({
         state,
-        event
-      })
-      if (res.state === 10000) {
+        num
+      }))
+      if (res.code === 10000) {
         this.$message(res.message)
       }
     }

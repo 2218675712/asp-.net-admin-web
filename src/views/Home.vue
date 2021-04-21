@@ -106,7 +106,9 @@ export default {
      */
     logout () {
       // 销毁本地token
-      window.sessionStorage.clear()
+      this.$cookies.remove('Admin_ID')
+      this.$cookies.remove('Admin_Password')
+      this.$cookies.remove('Admin_Name')
       this.$router.push('/login')
     },
     /**
