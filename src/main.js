@@ -5,6 +5,7 @@ import qs from 'qs'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
 import VueLazyload from 'vue-lazyload'
 import VueCookies from 'vue-cookies'
 import VueAMap from 'vue-amap'

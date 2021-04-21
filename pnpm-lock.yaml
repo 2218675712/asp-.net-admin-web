@@ -31,6 +31,7 @@ devDependencies:
   less-loader: 5.0.0_less@3.13.1
   lint-staged: 9.5.0
   node-sass: 5.0.0
+  postcss-px-to-viewport: 1.1.1
   sass-loader: 11.0.1_node-sass@5.0.0
   vue-template-compiler: 2.6.12
 lockfileVersion: 5.2
@@ -6859,6 +6860,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
+  /nanoid/3.1.22:
+    dev: true
+    engines:
+      node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1
+    hasBin: true
+    resolution:
+      integrity: sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
   /nanomatch/1.2.13:
     dependencies:
       arr-diff: 4.0.0
@@ -7972,6 +7980,13 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-2fCObh5UanxvSxeXrtLtlwVThBvHn6MQcu4ksNT2tsaV2Fg76R2CV98W7wNSlX+5/pFwEyaDwKLLoEV7uRybAw==
+  /postcss-px-to-viewport/1.1.1:
+    dependencies:
+      object-assign: 4.1.1
+      postcss: 8.2.10
+    dev: true
+    resolution:
+      integrity: sha512-2x9oGnBms+e0cYtBJOZdlwrFg/mLR4P1g2IFu7jYKvnqnH/HLhoKyareW2Q/x4sg0BgklHlP1qeWo2oCyPm8FQ==
   /postcss-reduce-initial/4.0.3:
     dependencies:
       browserslist: 4.16.3
@@ -8054,6 +8069,16 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg==
+  /postcss/8.2.10:
+    dependencies:
+      colorette: 1.2.2
+      nanoid: 3.1.22
+      source-map: 0.6.1
+    dev: true
+    engines:
+      node: ^10 || ^12 || >=14
+    resolution:
+      integrity: sha512-b/h7CPV7QEdrqIxtAf2j31U5ef05uBDuvoXv6L51Q4rcS1jdlXAVKJv+atCFdUXYl9dyTHGyoMzIepwowRJjFw==
   /prelude-ls/1.1.2:
     dev: true
     engines:
@@ -10536,6 +10561,7 @@ specifiers:
   lint-staged: ^9.5.0
   mockjs: ^1.1.0
   node-sass: ^5.0.0
+  postcss-px-to-viewport: ^1.1.1
   qs: ^6.10.1
   sass-loader: ^11.0.1
   vue: ^2.6.11
