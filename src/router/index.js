@@ -79,8 +79,9 @@ router.beforeEach((to, from, next) => {
   }
   next()
 }) */
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
   // 用户直接访问登录页放行
+
   if (to.path === '/login') return next()
   // 判断是否登录
   const adminID = cookies.get('Admin_ID')
@@ -96,6 +97,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next() // 如果匹配到正确跳转
   }
-})
+}) */
 
 export default router

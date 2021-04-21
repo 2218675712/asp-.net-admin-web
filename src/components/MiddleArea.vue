@@ -1,8 +1,10 @@
 <template>
 <div class="MiddleArea">
   <van-cell-group>
-    <van-cell title="修改密码" size="large"  icon="manager-o" is-link to="index"/>
-    <van-cell title="修改资料"  size="large"  icon="contact" is-link to="ModifyInformation"/>
+    <van-cell title="各人信息" size="large"  icon="manager-o" is-link to="ModifyInformation"/>
+    <van-cell title="测试信息"  size="large"  icon="contact" is-link to="index"/>
+    <van-cell title="测试信息"  size="large"  icon="contact" is-link to="index"/>
+    <van-cell title="测试信息"  size="large"  icon="contact" is-link to="index"/>
   </van-cell-group>
 
 </div>
