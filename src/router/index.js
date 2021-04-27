@@ -10,6 +10,7 @@ import PersonalInfo from '../views/Student/PersonalInfo'
 import StudentHome from '../views/Student/Home'
 import ModifyInformation from '../views/Student/ModifyInformation'
 import cookies from 'vue-cookies'
+import HomeMenu from '../views/Student/HomeMenu'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,10 @@ const routes = [
       {
         path: '/ModifyInformation',
         component: ModifyInformation
+      },
+      {
+        path: '/HomeMenu',
+        component: HomeMenu
       }
     ]
   }
@@ -67,19 +72,7 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-/* // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {
-  // 用户直接访问登录页放行
-  if (to.path === '/login') return next()
-  // 判断是否登录
-  const tokenStr = window.sessionStorage.getItem('token')
-  // 没有登陆强制跳转到登录页
-  if (!tokenStr) {
-    return next('/login')
-  }
-  next()
-}) */
-/* router.beforeEach((to, from, next) => {
   // 用户直接访问登录页放行
 
   if (to.path === '/login') return next()
@@ -97,6 +90,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next() // 如果匹配到正确跳转
   }
-}) */
+})
 
 export default router

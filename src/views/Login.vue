@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import '../assets/js/rem'
 export default {
   name: 'Login',
   data () {
@@ -111,9 +112,8 @@ export default {
   background-color: #2D3A4B;
 
   .login-form {
-    width: 500px;
-    height: 300px;
-    //background-color: #FFFFFF;
+
+    width: 5rem;
     border-radius: 4px;
     position: absolute;
     left: 50%;

@@ -2,13 +2,14 @@
   <div class="Home">
     <Nav :active="active"></Nav>
     <div class="main">
-    <router-view></router-view>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import Nav from '../../components/Nav'
+
 export default {
   name: 'Home',
   components: { Nav },
@@ -21,11 +22,12 @@ export default {
 </script>
 
 <style scoped lang="less">
-.nav{
+.nav {
   //width: 100vw;
   //height: 13.33vw;
 }
-.main{
+
+.main {
   //width: 100vw;
   //height: 80vh;
 }

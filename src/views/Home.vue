@@ -105,7 +105,7 @@ export default {
      * 退出登录
      */
     logout () {
-      // 销毁本地token
+      // 销毁本地cookie
       this.$cookies.remove('Admin_ID')
       this.$cookies.remove('Admin_Password')
       this.$cookies.remove('Admin_Name')

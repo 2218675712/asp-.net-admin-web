@@ -3,7 +3,7 @@
     <HeaderInfo></HeaderInfo>
     <MiddleArea></MiddleArea>
 <!--    <van-button type="default" plain block class="logout">退出登录</van-button>-->
-    <a href="javascript:;" class="logout">退出登录</a>
+    <a href="javascript:;" class="logout" @click="logout">退出登录</a>
   </div>
 </template>
 
@@ -13,7 +13,18 @@ import MiddleArea from '../../components/MiddleArea'
 
 export default {
   name: 'PersonalInfo',
-  components: { MiddleArea, HeaderInfo }
+  components: { MiddleArea, HeaderInfo },
+  methods: {
+    logout () {
+      this.$cookies.remove('Admin_ID')
+      this.$cookies.remove('Admin_Password')
+      this.$cookies.remove('Admin_Name')
+      this.Toast.success('退出登录成功，请重新登录')
+      setTimeout(() => {
+        this.$router.push('/login')
+      }, 500)
+    }
+  }
 }
 </script>
 <style scoped lang="less">
@@ -25,7 +36,7 @@ export default {
     font-weight: 100;
     text-align: center;
     font-size: 4.8vw;
-    margin-top: 40vh;
+    margin-top: 30vh;
   }
 }
 

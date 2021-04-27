@@ -18,7 +18,7 @@ import store from './store'
 // 配全局属性配置，在任意组件内可以使用this.$qs获取qs对象
 Vue.prototype.$qs = qs
 
-const moke = true
+const moke = false
 if (moke) {
   require('./mock/api')
 }
@@ -34,8 +34,8 @@ Vue.use(VueAxios, Axios)
 Vue.use(ElementUI) // global css
 Vue.use(Vant)
 // 根据前端的跨域方式做调整
-Axios.defaults.baseURL = '/api'
-// Axios.defaults.baseURL = '/S1mple_SchoolManager'
+// Axios.defaults.baseURL = '/api'
+Axios.defaults.baseURL = '/S1mple_SchoolManager'
 // 设置请求超时
 Axios.defaults.timeout = 3000
 // 设置post请求为form表单
