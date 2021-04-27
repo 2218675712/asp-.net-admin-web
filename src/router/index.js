@@ -48,6 +48,7 @@ const routes = [
     path: '/Student',
     name: 'Student',
     component: StudentHome,
+    redirect: '/HomeMenu',
     children: [
       {
         path: '/Home',
