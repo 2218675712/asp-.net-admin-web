@@ -4,7 +4,7 @@
     <div class="middle_menu">
       <van-grid gutter="10">
         <van-grid-item icon="comment-circle" text="健康打卡"/>
-        <van-grid-item icon="more" text="课表"/>
+        <van-grid-item icon="more" text="课表" to="/SchoolTimetable"/>
         <van-grid-item icon="bell" text="通知"/>
         <van-grid-item icon="photo-o" text="文3"/>
         <van-grid-item icon="photo-o" text="文4"/>
@@ -22,8 +22,8 @@ import Homepage from '../../components/Homepage'
 
 export default {
   name: 'HomeMenu',
-  components: {Homepage},
-  data() {
+  components: { Homepage },
+  data () {
     return {}
   }
 }

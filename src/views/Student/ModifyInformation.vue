@@ -81,7 +81,7 @@
 <script>
 export default {
   name: 'ModifyInformation',
-  props: ['title'],
+
   data () {
     return {
       username: '',
@@ -91,7 +91,8 @@ export default {
       Education: '',
       EducationalSystem: '',
       imgUrl: [],
-      sendImgUrl: ''
+      sendImgUrl: '',
+      title: this.$route.params.title
     }
   },
   methods: {

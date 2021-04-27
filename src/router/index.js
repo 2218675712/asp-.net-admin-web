@@ -9,8 +9,9 @@ import AttendanceList from '../views/AttendanceList'
 import PersonalInfo from '../views/Student/PersonalInfo'
 import StudentHome from '../views/Student/Home'
 import ModifyInformation from '../views/Student/ModifyInformation'
-import cookies from 'vue-cookies'
 import HomeMenu from '../views/Student/HomeMenu'
+import SchoolTimetable from '../views/Student/SchoolTimetable'
+import cookies from 'vue-cookies'
 
 Vue.use(VueRouter)
 
@@ -59,12 +60,17 @@ const routes = [
         component: PersonalInfo
       },
       {
+        name: 'ModifyInformation',
         path: '/ModifyInformation',
         component: ModifyInformation
       },
       {
         path: '/HomeMenu',
         component: HomeMenu
+      },
+      {
+        path: '/SchoolTimetable',
+        component: SchoolTimetable
       }
     ]
   }
