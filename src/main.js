@@ -65,7 +65,6 @@ Axios.interceptors.response.use(function (response) {
       message: res.message,
       type: 'warning'
     })
-    this.$message.warning(res.message)
     return Promise.reject(res)
   }
 }, (error) => {

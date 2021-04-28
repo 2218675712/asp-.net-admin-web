@@ -1,13 +1,6 @@
 <template>
 <div>
-  <div>
-    <van-nav-bar
-      :title="title"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
-  </div>
+  <go-back :title="title"></go-back>
   <el-table
     :data="CurriculumList"
     border
@@ -62,8 +55,10 @@
 </template>
 
 <script>
+import GoBack from '../../components/GoBack'
 export default {
   name: 'SchoolTimetable',
+  components: { GoBack },
   data () {
     return {
       // 课程表展示
@@ -80,13 +75,6 @@ export default {
     async GetCurriculumList () {
       const { data: res } = await this.axios.post('CurriculumList/GetCurriculumList')
       this.CurriculumList = res.data
-    },
-    /**
-     * 返回按钮
-     */
-    onClickLeft () {
-      // this.Toast('返回')
-      this.$router.back()
     }
   },
   created () {

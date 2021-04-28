@@ -5,7 +5,7 @@
       <van-grid gutter="10">
         <van-grid-item icon="comment-circle" text="健康打卡"/>
         <van-grid-item icon="more" text="课表" to="/SchoolTimetable"/>
-        <van-grid-item icon="bell" text="通知"/>
+        <van-grid-item icon="bell" text="通知"  to="/Notice"/>
         <van-grid-item icon="photo-o" text="文3"/>
         <van-grid-item icon="photo-o" text="文4"/>
         <van-grid-item icon="photo-o" text="文5"/>

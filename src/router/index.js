@@ -11,6 +11,7 @@ import StudentHome from '../views/Student/Home'
 import ModifyInformation from '../views/Student/ModifyInformation'
 import HomeMenu from '../views/Student/HomeMenu'
 import SchoolTimetable from '../views/Student/SchoolTimetable'
+import Notice from '../views/Student/Notice'
 import cookies from 'vue-cookies'
 
 Vue.use(VueRouter)
@@ -71,6 +72,10 @@ const routes = [
       {
         path: '/SchoolTimetable',
         component: SchoolTimetable
+      },
+      {
+        path: '/Notice',
+        component: Notice
       }
     ]
   }

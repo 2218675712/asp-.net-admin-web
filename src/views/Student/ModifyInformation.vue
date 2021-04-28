@@ -18,7 +18,6 @@
                 height="50"
                 :src='require("../../assets/img/default_img.jpg")'
               />
-              <!-- <img src="../../assets/img/default_img.jpg" alt="">-->
             </van-uploader>
           </template>
           <template #label>
