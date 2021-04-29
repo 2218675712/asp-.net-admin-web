@@ -54,7 +54,7 @@ Axios.interceptors.response.use(function (response) {
   } else if (res.infocode === '10000') {
     // 临时配置获取定位接口不会出错
     return response
-  } else if (res.code === '10002') {
+  } else if (res.code === 10002) {
     if (path !== '#/login') {
       ElementUI.Message({
         message: res.message,
