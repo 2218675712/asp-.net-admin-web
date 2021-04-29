@@ -49,7 +49,6 @@ Axios.defaults.withCredentials = false
 Axios.interceptors.response.use(function (response) {
   const res = response.data
   const path = location.hash
-  console.log(response)
   if (res.code === 10000) {
     return response
   } else if (res.infocode === '10000') {
