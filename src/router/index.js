@@ -13,6 +13,7 @@ import HomeMenu from '../views/Student/HomeMenu'
 import SchoolTimetable from '../views/Student/SchoolTimetable'
 import Notice from '../views/Student/Notice'
 import cookies from 'vue-cookies'
+import ClockIn from '../views/Student/ClockIn'
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,9 @@ const routes = [
       {
         path: '/Notice',
         component: Notice
+      }, {
+        path: '/ClockIn',
+        component: ClockIn
       }
     ]
   }
