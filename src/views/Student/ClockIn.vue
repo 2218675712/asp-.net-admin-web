@@ -1,11 +1,6 @@
 <template>
   <div class="ClockIn">
-    <van-nav-bar
-      :title="title"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
+    <go-back :title="title"></go-back>
     <div class="part">
       <div class="timePart">
         <div class="GoWork" v-html="AsbInfo"></div>
@@ -54,10 +49,12 @@
 
 <script>
 import dayjs from 'dayjs'
+import GoBack from '../../components/GoBack'
+import gcoord from 'gcoord'
 
 export default {
   name: 'ClockIn',
-  props: ['title'],
+  components: { GoBack },
   data () {
     return {
       // 实时时间
@@ -74,7 +71,8 @@ export default {
       // 请假或补卡说明
       Details: '',
       AsbInfo: '上班',
-      MsbInfo: '下班'
+      MsbInfo: '下班',
+      title: '打卡'
     }
   },
   methods: {
@@ -88,10 +86,8 @@ export default {
         const that = this
         /* 地理位置服务可用 */
         navigator.geolocation.getCurrentPosition(async function (position) {
-          console.log(position)
-          // TODO 转换火星坐标
-
-          const { data: res } = await that.axios.get(`https://restapi.amap.com/v3/geocode/regeo?key=cf8a25f617d748d62e5c9380c8e2c934&location=${position.coords.longitude},${position.coords.latitude}`)
+          const WGS84ToGCJ02 = gcoord.transform([position.coords.longitude, position.coords.latitude], gcoord.WGS84, gcoord.GCJ02)
+          const { data: res } = await that.axios.get(`https://restapi.amap.com/v3/geocode/regeo?key=cf8a25f617d748d62e5c9380c8e2c934&location=${WGS84ToGCJ02[0]},${WGS84ToGCJ02[1]}`)
           console.log(res)
         })
       } else {

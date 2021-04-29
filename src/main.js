@@ -49,9 +49,13 @@ Axios.defaults.withCredentials = false
 Axios.interceptors.response.use(function (response) {
   const res = response.data
   const path = location.hash
+  console.log(response)
   if (res.code === 10000) {
     return response
-  } else if (res.code === 10002) {
+  } else if (res.infocode === '10000') {
+    // 临时配置获取定位接口不会出错
+    return response
+  } else if (res.code === '10002') {
     if (path !== '#/login') {
       ElementUI.Message({
         message: res.message,
