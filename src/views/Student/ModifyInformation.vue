@@ -189,7 +189,7 @@ export default {
 .under {
   .van-cell__title van-field__label {
     span {
-      line-height: 50px;
+      line-height: 13.33vw;
     }
   }
 }
