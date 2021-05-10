@@ -80,15 +80,23 @@ export default {
      * 正常打卡
      * @constructor
      */
-    Clock () {
+    async Clock () {
       this.CheckSuccessfullyTime = this.sday
+      let address = ''
       if ('geolocation' in navigator) {
         const that = this
         /* 地理位置服务可用 */
         navigator.geolocation.getCurrentPosition(async function (position) {
           const WGS84ToGCJ02 = gcoord.transform([position.coords.longitude, position.coords.latitude], gcoord.WGS84, gcoord.GCJ02)
-          const { data: res } = await that.axios.get(`https://restapi.amap.com/v3/geocode/regeo?key=cf8a25f617d748d62e5c9380c8e2c934&location=${WGS84ToGCJ02[0]},${WGS84ToGCJ02[1]}`)
-          console.log(res)
+          const { data: res1 } = await that.axios.get(`https://restapi.amap.com/v3/geocode/regeo?key=cf8a25f617d748d62e5c9380c8e2c934&location=${WGS84ToGCJ02[0]},${WGS84ToGCJ02[1]}`)
+          address = res1.regeocode.formatted_address
+          const { data: res2 } = await that.axios.post('StudentPunchManager/CreatePunch', { Address: address })
+          console.log(res2)
+          that.$toast({
+            message: res2.message,
+            type: 'success',
+            overlay: true
+          })
         })
       } else {
         /* 地理位置服务不可用 */
@@ -114,7 +122,7 @@ export default {
      * @constructor
      */
     async GetInfo () {
-      const { data: res } = await this.axios.post('https://www.fastmock.site/mock/afca470367d687b9216ae503f422d27c/dk/api/dk')
+      const { data: res } = await this.axios.post('\thttp://127.0.0.1:4523/mock2/381306/4600646')
       this.ClockInList = res.data
       this.AsbInfo = '上班' + this.ClockInList.Asb.StartTime
       this.MsbInfo = '下班' + this.ClockInList.Msb.StartTime
@@ -133,7 +141,7 @@ export default {
     setInterval(() => {
       this.sday = dayjs().format('HH:mm:ss')
     }, 1000)
-    this.GetInfo()
+    // this.GetInfo()
   },
   watch: {
     disBtn: function () {

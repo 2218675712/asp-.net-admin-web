@@ -2,7 +2,7 @@
   <div class="PersonalInfo">
     <HeaderInfo></HeaderInfo>
     <MiddleArea></MiddleArea>
-<!--    <van-button type="default" plain block class="logout">退出登录</van-button>-->
+    <!--    <van-button type="default" plain block class="logout">退出登录</van-button>-->
     <a href="javascript:;" class="logout" @click="logout">退出登录</a>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       this.$cookies.remove('Admin_ID')
       this.$cookies.remove('Admin_Password')
       this.$cookies.remove('Admin_Name')
-      this.Toast.success('退出登录成功，请重新登录')
+      this.$toast.success('退出登录成功，请重新登录')
       setTimeout(() => {
         this.$router.push('/login')
       }, 500)
@@ -29,7 +29,6 @@ export default {
 </script>
 <style scoped lang="less">
 .PersonalInfo {
-
   .logout {
     display: block;
     color: #323233;
